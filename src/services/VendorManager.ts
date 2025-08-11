@@ -5,11 +5,7 @@ import {
     readVendorsFromSheet 
 } from "./ExcelService";
 
-/**
- * Initialize vendors data:
- * 1. If vendors exist in localStorage → sync to Excel.
- * 2. If no vendors in localStorage → read from Excel and store locally.
- */
+
 export async function initVendorData() {
     const localVendors = getVendorsFromLocalStorage();
 

@@ -23,7 +23,7 @@ export default function VendorList({ vendors, setVendors }: VendorListProps) {
     }
     const newVendor: Vendor = {
       id: Date.now().toString(),
-      index: vendors.length + 1, // 1-based index
+      index: vendors.length + 1,
       name,
       paymentType,
       assignedAccount,
@@ -41,9 +41,13 @@ export default function VendorList({ vendors, setVendors }: VendorListProps) {
 
   const saveEdit = () => {
     if (!editingId) return;
-    setVendors(prev => prev.map(v => v.id === editingId
-      ? { ...v, name: editName, paymentType: editPaymentType, assignedAccount: editAssignedAccount }
-      : v));
+    setVendors((prev) =>
+      prev.map((v) =>
+        v.id === editingId
+          ? { ...v, name: editName, paymentType: editPaymentType, assignedAccount: editAssignedAccount }
+          : v
+      )
+    );
     setEditingId(null);
   };
 
@@ -52,57 +56,113 @@ export default function VendorList({ vendors, setVendors }: VendorListProps) {
   };
 
   const deleteVendor = (id: string) => {
-    // remove vendor and reindex remaining vendors
-    setVendors(prev => {
-      const filtered = prev.filter(v => v.id !== id);
+    setVendors((prev) => {
+      const filtered = prev.filter((v) => v.id !== id);
       return filtered.map((v, i) => ({ ...v, index: i + 1 }));
     });
   };
 
   return (
-    <div style={{ padding: 20 }}>
-      <h2>Vendor Management</h2>
+    <div className="p-6 bg-white rounded-xl shadow-lg border border-gray-200 mt-8">
+      <h2 className="text-2xl font-bold text-gray-800 mb-6">Vendor Management</h2>
 
-      <input
-        type="text"
-        placeholder="Vendor Name"
-        value={name}
-        onChange={e => setName(e.target.value)}
-      />
-      <select value={paymentType} onChange={e => setPaymentType(e.target.value as Vendor["paymentType"])}>
-        <option value="Weekly">Weekly</option>
-        <option value="Biweekly">Biweekly</option>
-        <option value="On-Demand">On-Demand</option>
-      </select>
-      <select value={assignedAccount} onChange={e => setAssignedAccount(e.target.value as Vendor["assignedAccount"])}>
-        <option value="Account 1">Account 1</option>
-        <option value="Account 2">Account 2</option>
-      </select>
-      <button onClick={addVendor}>Add Vendor</button>
+      {/* Add Vendor Form */}
+      <div className="flex flex-wrap gap-3 mb-6">
+        <input
+          type="text"
+          placeholder="Vendor Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          className="flex-1 min-w-[150px] px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+        />
+        <select
+          value={paymentType}
+          onChange={(e) => setPaymentType(e.target.value as Vendor["paymentType"])}
+          className="px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+        >
+          <option value="Weekly">Weekly</option>
+          <option value="Biweekly">Biweekly</option>
+          <option value="On-Demand">On-Demand</option>
+        </select>
+        <select
+          value={assignedAccount}
+          onChange={(e) => setAssignedAccount(e.target.value as Vendor["assignedAccount"])}
+          className="px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+        >
+          <option value="Account 1">Account 1</option>
+          <option value="Account 2">Account 2</option>
+        </select>
+        <button
+          onClick={addVendor}
+          className="px-4 py-2 bg-blue-500 hover:bg-blue-400 text-white font-semibold rounded-lg shadow-md transition-all duration-200"
+        >
+          Add Vendor
+        </button>
+      </div>
 
-      <ul>
-        {vendors.map(v => (
-          <li key={v.id} style={{ marginBottom: 10 }}>
+      {/* Vendor List */}
+      <ul className="space-y-3">
+        {vendors.map((v) => (
+          <li
+            key={v.id}
+            className="bg-gray-50 border border-gray-200 rounded-lg p-4 flex flex-wrap items-center justify-between"
+          >
             {editingId === v.id ? (
-              <>
-                <input value={editName} onChange={e => setEditName(e.target.value)} />
-                <select value={editPaymentType} onChange={e => setEditPaymentType(e.target.value as Vendor["paymentType"])}>
+              <div className="flex flex-wrap gap-3 flex-1">
+                <input
+                  value={editName}
+                  onChange={(e) => setEditName(e.target.value)}
+                  className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-400"
+                />
+                <select
+                  value={editPaymentType}
+                  onChange={(e) => setEditPaymentType(e.target.value as Vendor["paymentType"])}
+                  className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-400"
+                >
                   <option value="Weekly">Weekly</option>
                   <option value="Biweekly">Biweekly</option>
                   <option value="On-Demand">On-Demand</option>
                 </select>
-                <select value={editAssignedAccount} onChange={e => setEditAssignedAccount(e.target.value as Vendor["assignedAccount"])}>
+                <select
+                  value={editAssignedAccount}
+                  onChange={(e) => setEditAssignedAccount(e.target.value as Vendor["assignedAccount"])}
+                  className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-400"
+                >
                   <option value="Account 1">Account 1</option>
                   <option value="Account 2">Account 2</option>
                 </select>
-                <button onClick={saveEdit}>Save</button>
-                <button onClick={cancelEdit}>Cancel</button>
-              </>
+                <button
+                  onClick={saveEdit}
+                  className="px-3 py-1 bg-green-500 hover:bg-green-400 text-white rounded-lg font-semibold"
+                >
+                  Save
+                </button>
+                <button
+                  onClick={cancelEdit}
+                  className="px-3 py-1 bg-gray-400 hover:bg-gray-300 text-white rounded-lg font-semibold"
+                >
+                  Cancel
+                </button>
+              </div>
             ) : (
               <>
-                {v.index}. {v.name} — {v.paymentType} — {v.assignedAccount}
-                <button style={{ marginLeft: 8 }} onClick={() => startEdit(v)}>Edit</button>
-                <button style={{ marginLeft: 8 }} onClick={() => deleteVendor(v.id)}>Delete</button>
+                <div className="flex-1">
+                  <span className="font-semibold">{v.index}. {v.name}</span> — {v.paymentType} — {v.assignedAccount}
+                </div>
+                <div className="flex gap-2">
+                  <button
+                    onClick={() => startEdit(v)}
+                    className="px-3 py-1 bg-yellow-500 hover:bg-yellow-400 text-white rounded-lg font-semibold"
+                  >
+                    Edit
+                  </button>
+                  <button
+                    onClick={() => deleteVendor(v.id)}
+                    className="px-3 py-1 bg-red-500 hover:bg-red-400 text-white rounded-lg font-semibold"
+                  >
+                    Delete
+                  </button>
+                </div>
               </>
             )}
           </li>
