@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:type="TaskPaneApp">
+  <Id>67a257ec-acc1-46c3-8e46-20c9d76020e4</Id>
+  <Version>1.0.0.0</Version>
+  <ProviderName>Anil Janjal</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+  <DisplayName DefaultValue="Vendor Payment Manager"/>
+  <Description DefaultValue="Manage vendor payments and bank reports inside Excel."/>
+  <IconUrl DefaultValue="https://localhost:5173/icons/icon-64.png"/>
+  <SupportUrl DefaultValue="https://localhost:5173/support"/>
+  <Hosts>
+    <Host Name="Workbook"/>
+  </Hosts>
+  <DefaultSettings>
+    <SourceLocation DefaultValue="https://localhost:5173/taskpane.html"/>
+  </DefaultSettings>
+  <Permissions>ReadWriteDocument</Permissions>
+</OfficeApp>
