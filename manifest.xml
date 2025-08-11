@@ -8,7 +8,7 @@
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="Vendor Payment Manager"/>
   <Description DefaultValue="Manage vendor payments and bank reports inside Excel."/>
-  <Icon<IconUrl DefaultValue="https://vendor-payment-manager.vercel.app/icons/icon-64.png"/>
+  <IconUrl DefaultValue="https://vendor-payment-manager.vercel.app/icons/icon-64.png"/>
 <SupportUrl DefaultValue="https://vendor-payment-manager.vercel.app/support"/>
   <Hosts>
     <Host Name="Workbook"/>
