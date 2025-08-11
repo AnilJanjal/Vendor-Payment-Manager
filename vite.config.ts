@@ -17,7 +17,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: path.resolve(__dirname, 'index.html'),
-        taskpane: path.resolve(__dirname, 'src/taskpane.html'), // 👈 add back
+        taskpane: path.resolve(__dirname, 'taskpane.html'), // ✅ moved to root
       },
     },
   },
