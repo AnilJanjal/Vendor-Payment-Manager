@@ -15,8 +15,9 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: {
-        main: path.resolve(__dirname, 'index.html'),
-        taskpane: path.resolve(__dirname, 'taskpane.html'), // 👈 include here
+        // Make BOTH root (/) and /taskpane.html use the same file
+        main: path.resolve(__dirname, 'taskpane.html'),
+        taskpane: path.resolve(__dirname, 'taskpane.html'),
       },
     },
   },
