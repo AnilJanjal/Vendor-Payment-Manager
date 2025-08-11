@@ -8,13 +8,13 @@
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="Vendor Payment Manager"/>
   <Description DefaultValue="Manage vendor payments and bank reports inside Excel."/>
-  <IconUrl DefaultValue="https://localhost:5173/icons/icon-64.png"/>
-  <SupportUrl DefaultValue="https://localhost:5173/support"/>
+  <Icon<IconUrl DefaultValue="https://vendor-payment-manager.vercel.app/icons/icon-64.png"/>
+<SupportUrl DefaultValue="https://vendor-payment-manager.vercel.app/support"/>
   <Hosts>
     <Host Name="Workbook"/>
   </Hosts>
   <DefaultSettings>
-    <SourceLocation DefaultValue="https://localhost:5173/taskpane.html"/>
+    <SourceLocation DefaultValue="https://vendor-payment-manager.vercel.app/taskpane.html"/>
   </DefaultSettings>
   <Permissions>ReadWriteDocument</Permissions>
 </OfficeApp>
