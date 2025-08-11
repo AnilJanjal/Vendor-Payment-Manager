@@ -12,12 +12,11 @@ export default defineConfig({
     },
     port: 5173
   },
-  publicDir: 'public',
   build: {
     rollupOptions: {
       input: {
         main: path.resolve(__dirname, 'index.html'),
-        taskpane: path.resolve(__dirname, 'taskpane.html'), // ✅ moved to root
+        taskpane: path.resolve(__dirname, 'taskpane.html'), // 👈 include here
       },
     },
   },
